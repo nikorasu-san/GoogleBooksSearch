@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Results = () => {
+const Results = (props) => {
+    console.log(props)
     return (
 
         <div className="card mt-4">

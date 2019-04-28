@@ -1,6 +1,7 @@
 import React from 'react';
 
-const Form = () => {
+const Form = (props) => {
+    console.log(props)
     return (
 
         <div className="card">
@@ -12,8 +13,8 @@ const Form = () => {
 
                         </div>
                         <div className="card-body">
-                            <input type="text" className="form-control" placeholder="Book" />
-                            <button type="submit" className="btn btn-primary mt-3">Submit</button>
+                            <input onChange={props.onChange} name="search" value={props.search} type="text" className="form-control" placeholder="Book" />
+                            <button onClick={props.apiCall} type="submit" className="btn btn-primary mt-3">Submit</button>
                         </div>
                     </div>
                 </div>
