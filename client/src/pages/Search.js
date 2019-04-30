@@ -22,25 +22,32 @@ class Search extends Component {
     // test
     loadBooks = (event) => {
         event.preventDefault()
-        API.getBooks().then((res) => console.log(res))
+        API.getBooks(this.state.search).then((res) => {
+            console.log("res", res.data)
+            this.setState({ books: res.data })
+            console.log(this.state.books)
+        })
     }
 
     handleChange = (event) => {
         const { name, value } = event.target
         console.log(event.target)
         this.setState({ [name]: value })
-
+        console.log(this.state.search)
     }
 
 
+
     render() {
-        console.log(this.state)
         return (
             <div className="container">
                 <br />
                 <Jumbotron />
-                <Form onchange={this.handleChange} value={this.state.search} apiCall={this.loadBooks} />
-                <Results />
+                <Form onChange={this.handleChange}
+                    value={this.state.search}
+                    apiCall={this.loadBooks}
+                />
+                <Results data={this.state.books} />
             </div >
         )
     }

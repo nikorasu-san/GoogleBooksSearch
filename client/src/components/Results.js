@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Results = (props) => {
-    console.log(props)
+    console.log("result props", props)
     return (
 
         <div className="card mt-4">
@@ -9,31 +9,36 @@ const Results = (props) => {
                 <h5>Results</h5>
             </div>
             <div className="card-body">
-
-                <div className="card p-4">
-                    <div className="row">
-                        <div className="col-10">
-                            <h5 className="card-title">Book Title</h5>
-                        </div>
-                        <div className="col-2">
-                            <button type="submit" className="btn btn-primary m-1">View</button>
-                            <button type="submit" className="btn btn-primary m-1">Save</button>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col">
-                            <h5>Written by Author</h5>
-                        </div>
-                    </div>
-                    <div className="row">
-                        <div className="col-3">
-                            Image box
-                        </div>
-                        <div className="col-9">
-                            <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                        </div>
-                    </div>
-                </div>
+                {!props.data.length ? (<h5 className="text-center">No Books to Display</h5>) : (
+                    props.data.map((book, id) => {
+                        return (
+                            <div key={id} className="card p-4">
+                                <div className="row">
+                                    <div className="col-10">
+                                        <h5 className="card-title">{book.volumeInfo.title}</h5>
+                                    </div>
+                                    <div className="col-2">
+                                        <a target="_blank" href={book.volumeInfo.infoLink} rel="noopener noreferrer"><button type="submit" className="btn btn-primary m-1">View</button></a>
+                                        <button type="submit" className="btn btn-primary m-1">Save</button>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col">
+                                        <h5>Written by {book.volumeInfo.authors}</h5>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                    <div className="col-3">
+                                        <img src={book.volumeInfo.imageLinks.smallThumbnail} alt={book.volumeInfo.title} />
+                                    </div>
+                                    <div className="col-9">
+                                        <p className="card-text">{book.volumeInfo.description}</p>
+                                    </div>
+                                </div>
+                            </div>)
+                    }
+                    )
+                )}
             </div>
         </div>
     )

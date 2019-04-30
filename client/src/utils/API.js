@@ -3,6 +3,8 @@ import axios from "axios";
 export default {
 
     getBooks: function (query) {
-        return axios.get("/api/books", query);
+        let data = { data: query }
+        console.log("data", data)
+        return axios.post("/api/books", data);
     }
 }

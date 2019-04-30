@@ -6,21 +6,22 @@ const secret = require("../keys");
 const gbook = secret.api.key;
 
 // API Routes
-router.route("/api/books").get(function (req, res) {
-    console.log(req.body)
+router.route("/api/books").post(
+    function (req, res) {
+        console.log("body", req.body.data)
+        //console.log(req)
+        axios.get(`https://www.googleapis.com/books/v1/volumes?q=${req.body.data}`).then((data) => {
+            console.log(data.data.items[0])
+            res.json(data.data.items)
+        })
+        //res.json("nothing")
 
-    // axios.get(`https://www.googleapis.com/books/v1/volumes?key=${gbook}&q=${req.body}`).then((data) => {
-    //     console.log(data)
-    //     res.json(data)
-    // })
-    //res.json
 
 
 
-
-    //GET  https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey
-    //res.json({ yes: "queen" })
-})
+        //GET  https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey
+        //res.json({ yes: "queen" })
+    })
 
 // If no API routes are hit, send the React app
 router.use(function (req, res) {
