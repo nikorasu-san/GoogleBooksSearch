@@ -3,7 +3,7 @@ const router = require("express").Router();
 const axios = require("axios");
 const secret = require("../keys");
 
-const gbook = secret.api.key;
+//const gbook = secret.api.key;
 
 // API Routes
 router.route("/api/books").post(
@@ -14,14 +14,11 @@ router.route("/api/books").post(
             console.log(data.data.items[0])
             res.json(data.data.items)
         })
-        //res.json("nothing")
-
-
-
-
-        //GET  https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=yourAPIKey
-        //res.json({ yes: "queen" })
     })
+
+router.route("/api/save").post(function (req, res) {
+    console.log("body", req.body)
+})
 
 // If no API routes are hit, send the React app
 router.use(function (req, res) {

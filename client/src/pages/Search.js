@@ -32,11 +32,23 @@ class Search extends Component {
     handleChange = (event) => {
         const { name, value } = event.target
         console.log(event.target)
+        console.log(name, value)
         this.setState({ [name]: value })
         console.log(this.state.search)
     }
 
+    saveBook = (book) => {
+        console.log(book);
 
+        // event.preventDefault()
+        // console.log("clicked")
+        // console.log(event.target);
+        // console.log(event.target.obj)
+        //const { title, infolink, author, img, description } = event.target;
+        //let book = event.target.title;
+        //console.log(title, infolink, author, img, description);
+
+    }
 
     render() {
         return (
@@ -46,8 +58,11 @@ class Search extends Component {
                 <Form onChange={this.handleChange}
                     value={this.state.search}
                     apiCall={this.loadBooks}
+
                 />
-                <Results data={this.state.books} />
+                <Results
+                    data={this.state.books}
+                    save={this.saveBook} />
             </div >
         )
     }

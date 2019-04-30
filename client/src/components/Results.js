@@ -19,7 +19,8 @@ const Results = (props) => {
                                     </div>
                                     <div className="col-2">
                                         <a target="_blank" href={book.volumeInfo.infoLink} rel="noopener noreferrer"><button type="submit" className="btn btn-primary m-1">View</button></a>
-                                        <button type="submit" className="btn btn-primary m-1">Save</button>
+                                        {/* <button obj={book} title={book.volumeInfo.title} infolink={book.volumeInfo.infoLink} author={book.volumeInfo.authors} img={book.volumeInfo.imageLinks.smallThumbnail} description={book.volumeInfo.description} onClick={props.save} type="submit" className="btn btn-primary m-1">Save</button> */}
+                                        <button onClick={() => props.save(book)} type="submit" className="btn btn-primary m-1">Save</button>
                                     </div>
                                 </div>
                                 <div className="row">
