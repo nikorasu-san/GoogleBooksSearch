@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Jumbotron from "../components/Jumbotron";
 import Form from "../components/Form";
 import Results from "../components/Results";
 import API from "../utils/API";
@@ -8,16 +7,11 @@ import API from "../utils/API";
 class Search extends Component {
     state = {
         books: [],
-        title: "",
-        author: "",
-        synopsis: "",
         search: ""
 
     };
 
-    // loadBooks = () => {
-    //     API.getBooks().then((res) => this.setState({ books: res.data }))
-    //   }
+
 
     // test
     loadBooks = (event) => {
@@ -39,22 +33,23 @@ class Search extends Component {
 
     saveBook = (book) => {
         console.log(book);
-
-        // event.preventDefault()
-        // console.log("clicked")
-        // console.log(event.target);
-        // console.log(event.target.obj)
-        //const { title, infolink, author, img, description } = event.target;
-        //let book = event.target.title;
-        //console.log(title, infolink, author, img, description);
-
+        const savedBook = {
+            title: book.volumeInfo.title,
+            infoLink: book.volumeInfo.infoLink,
+            author: book.volumeInfo.authors.join(","),
+            img: book.volumeInfo.imageLinks.smallThumbnail,
+            description: book.volumeInfo.description
+        }
+        console.log(savedBook);
+        API.saveBook(savedBook).then((res) => {
+            console.log("res", res)
+            //console.log("saved?")
+        })
     }
 
     render() {
         return (
-            <div className="container">
-                <br />
-                <Jumbotron />
+            <div>
                 <Form onChange={this.handleChange}
                     value={this.state.search}
                     apiCall={this.loadBooks}

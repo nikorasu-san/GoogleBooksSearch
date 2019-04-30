@@ -10,5 +10,9 @@ export default {
 
     saveBook: function (query) {
         return axios.post("/api/save", query);
+    },
+
+    getSaved: function () {
+        return axios.get("/saved")
     }
 }
