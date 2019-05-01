@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navbar from "./components/Navbar"
 import Search from "./pages/Search"
 import Jumbotron from "./components/Jumbotron"
-import Saved from './pages/Saved';
+import BookSaved from './pages/BookSaved'
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
           <br />
           <Jumbotron />
           <Route exact path="/" component={Search} />
-          <Route exact path="/saved" component={Saved} />
+          <Route exact path="/saved" component={BookSaved} />
           {/* <Route exact path="/about" component={About} />
         <Route exact path="/blog" component={Blog} />
       <Route path="/contact" component={Contact} /> */}

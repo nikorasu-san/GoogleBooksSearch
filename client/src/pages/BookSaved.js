@@ -3,7 +3,7 @@ import Results from "../components/Results";
 import API from "../utils/API";
 
 
-class Saved extends Component {
+class BookSaved extends Component {
     state = {
         books: [],
         savedPage: true
@@ -47,4 +47,4 @@ class Saved extends Component {
     }
 }
 
-export default Saved
+export default BookSaved
