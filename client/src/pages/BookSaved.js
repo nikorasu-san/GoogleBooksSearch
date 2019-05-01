@@ -38,11 +38,10 @@ class BookSaved extends Component {
     render() {
         return (
             <div>
-                {/* <Results
+                <Results
                     data={this.state.books}
                     remove={this.removeBook}
-                    savedPage={this.state.savedPage} /> */}
-                hello
+                    savedPage={this.state.savedPage} />
             </div >
         )
     }
