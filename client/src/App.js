@@ -17,7 +17,7 @@ function App() {
           <br />
           <Jumbotron />
           <Route exact path="/" component={Search} />
-          <Route exact path="/saved" component={BookSaved} />
+          <Route exact path="/booksaved" component={BookSaved} />
           {/* <Route exact path="/about" component={About} />
         <Route exact path="/blog" component={Blog} />
       <Route path="/contact" component={Contact} /> */}
