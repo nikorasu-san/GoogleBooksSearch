@@ -13,6 +13,10 @@ export default {
     },
 
     getSaved: function () {
-        return axios.get("/saved")
+        return axios.get("/saved");
+    },
+
+    removeBook: function (id) {
+        return axios.post("/remove/" + id);
     }
 }

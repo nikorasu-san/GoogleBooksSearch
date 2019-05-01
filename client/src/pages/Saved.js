@@ -6,7 +6,7 @@ import API from "../utils/API";
 class Saved extends Component {
     state = {
         books: [],
-        search: ""
+        savedPage: true
     };
 
     // get saved books
@@ -27,13 +27,21 @@ class Saved extends Component {
         })
     }
 
+    removeBook = (id) => {
+        console.log(id)
+        API.removeBook(id).then((res) => {
+            console.log(res);
+            window.location.reload();
+        })
+    }
 
     render() {
         return (
             <div>
                 <Results
                     data={this.state.books}
-                    save={this.saveBook} />
+                    remove={this.removeBook}
+                    savedPage={this.state.savedPage} />
             </div >
         )
     }
